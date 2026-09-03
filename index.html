@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>NoFap — Calendário de Sequência</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-glow bg-glow--a"></div>
+  <div class="bg-glow bg-glow--b"></div>
+
+  <main class="app">
+
+    <!-- ===================== CABEÇALHO ===================== -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-badge" aria-hidden="true">🔥</span>
+        <div>
+          <h1 class="logo-title">NoFap</h1>
+          <p class="logo-sub">Um dia de cada vez.</p>
+        </div>
+      </div>
+      <p class="month-label"><span id="monthTitle">Setembro</span> <span id="monthYear">2026</span></p>
+    </header>
+
+    <!-- ===================== SEQUÊNCIA ATUAL ===================== -->
+    <section class="streak-card" aria-live="polite">
+      <div class="streak-left">
+        <span class="streak-flame" aria-hidden="true">🔥</span>
+        <div>
+          <p class="streak-label">Sequência atual</p>
+          <p class="streak-value"><span id="streakValue">0</span> <span class="streak-unit">dias</span></p>
+        </div>
+      </div>
+      <p class="streak-motivation" id="motivationText">Comece hoje. O dia 1 é o mais importante.</p>
+    </section>
+
+    <!-- ===================== CALENDÁRIO ===================== -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2 class="panel-title">Setembro</h2>
+        <p class="panel-sub">Toque em um dia para registrar</p>
+      </div>
+
+      <div class="weekdays" aria-hidden="true">
+        <span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span>
+      </div>
+
+      <div class="calendar" id="calendar" role="grid" aria-label="Calendário de setembro"></div>
+
+      <div class="legend">
+        <span class="legend-item"><i class="dot dot--success"></i> Consegui</span>
+        <span class="legend-item"><i class="dot dot--fail"></i> Perdi</span>
+        <span class="legend-item"><i class="dot dot--today"></i> Hoje</span>
+        <span class="legend-item"><i class="dot dot--locked"></i> Bloqueado</span>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-head">
+          <span>Dias registrados</span>
+          <span id="progressText">0 / 30</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+    </section>
+
+    <!-- ===================== ESTATÍSTICAS ===================== -->
+    <section class="stats">
+      <article class="stat">
+        <p class="stat-value stat-value--orange" id="statCurrent">0</p>
+        <p class="stat-label">Sequência atual</p>
+      </article>
+      <article class="stat">
+        <p class="stat-value stat-value--gold" id="statBest">0</p>
+        <p class="stat-label">Melhor sequência</p>
+      </article>
+      <article class="stat">
+        <p class="stat-value stat-value--success" id="statSuccess">0</p>
+        <p class="stat-label">Dias concluídos</p>
+      </article>
+      <article class="stat">
+        <p class="stat-value stat-value--fail" id="statFail">0</p>
+        <p class="stat-label">Dias perdidos</p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <p class="footer-text">Dados salvos localmente no seu navegador (IndexedDB).</p>
+      <button class="btn-reset" id="resetBtn" type="button">Apagar todos os registros</button>
+    </footer>
+  </main>
+
+  <!-- ===================== MODAL DE REGISTRO ===================== -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close="1" aria-label="Fechar">✕</button>
+      <h3 class="modal-title" id="modalTitle">Dia 5 de setembro</h3>
+      <p class="modal-ask">Como foi esse dia?</p>
+      <p class="modal-current" id="modalCurrent"></p>
+
+      <button class="choice choice--success" id="btnSuccess" type="button">
+        <span class="choice-icon" aria-hidden="true">✓</span>
+        <span class="choice-text"><strong>Consegui</strong><small>Manter a sequência</small></span>
+      </button>
+      <button class="choice choice--fail" id="btnFail" type="button">
+        <span class="choice-icon" aria-hidden="true">✕</span>
+        <span class="choice-text"><strong>Perdi</strong><small>A sequência zera</small></span>
+      </button>
+
+      <button class="btn-clear" id="btnClear" type="button" hidden>Apagar registro deste dia</button>
+      <button class="btn-cancel" type="button" data-close="1">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- ===================== TOAST ===================== -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
