@@ -3,7 +3,7 @@
    Vanilla JS + IndexedDB. Sem frameworks, sem CDN, sem build.
    Funciona abrindo index.html com duplo clique.
    ========================================================= */
-
+lsadjfls
 /* ------------------ Constantes ------------------ */
 const MONTH_INDEX    = 8;    // setembro (0 = janeiro)
 const MONTH_NAME     = 'Setembro';
